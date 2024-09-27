@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   inicio() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
+      name: "servicioscommune",
       options: DefaultFirebaseOptions.currentPlatform,
     );
   }

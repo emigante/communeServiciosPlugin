@@ -1,6 +1,6 @@
 name: servicioscommune
 description: "Servicios Commune"
-version: 0.0.4
+version: 0.0.5
 homepage:
 
 environment:
@@ -17,6 +17,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   firebase_core: ^2.27.0
   cloud_firestore: ^4.15.8
+  http: ^1.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

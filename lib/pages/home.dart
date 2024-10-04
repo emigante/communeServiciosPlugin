@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:servicioscommune/columnBuilder.dart';
 import 'package:servicioscommune/controls/connection.dart';
 import 'package:servicioscommune/firebase_options.dart';
 import 'package:servicioscommune/models/tipoServicios.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:servicioscommune/pages/resultados.dart';
 
 
 
@@ -63,44 +65,22 @@ class _HomePageState extends State<HomePage> {
           if (_tipoElegido == null || _tipoElegido?.nombre == null) {
             _tipoElegido = _tipoServiciosList.first;
           }
-          return Container(
-            width: 250,
-            margin: const EdgeInsets.only(
-              top: 20, left: 15
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [                
-                const SizedBox(
-                  height: 5,
-                ),
-                DropdownButtonHideUnderline(
-                  child:  DropdownButton<TipoServicios>(
-                      isExpanded: true,
-                      value: _tipoElegido,
-                      isDense: true,
-                      onChanged: (newValue) {
-                        setState(() {
-                          _tipoElegido = newValue!;
-                        });
-                      },
-                      items: List<TipoServicios>.from(_tipoServiciosList)
-                          .map((TipoServicios value) {
-                        return  DropdownMenuItem<TipoServicios>(
-                          value: value,
-                          child:  Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(value.nombre.toString()),                                
-                              ],
-                          ),
-                        );
-                      }).toList()),
-                )
-              ],
-            ),
-          );
+          return ColumnBuilder(
+            itemCount: _tipoServiciosList.length,
+            itemBuilder: (context, index) {
+
+              
+              return ListTile(
+                title: Text(_tipoServiciosList[index].nombre.toString(), style: TextStyle(fontSize: 18),),
+                onTap: (){
+                  Navigator.push(
+                    context,
+                      MaterialPageRoute(builder: (context) => const ResultadosPage()),
+                  );
+
+                },
+              );
+            });
         } else {
           return const SizedBox();
         }

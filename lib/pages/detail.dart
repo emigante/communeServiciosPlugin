@@ -41,8 +41,69 @@ class _DetailsPageState extends State<DetailsPage> {
             margin: EdgeInsets.only(left: 10, top: 10),
             child: Text("Ofrecemos una amplia variedad de servicios")
           ),
+          _horarios()
         ],),
       ),
+    );
+  }
+
+  _horarios(){
+    List<Widget> list = [];
+
+    list.add(
+      Container(
+          margin: EdgeInsets.only(top: 15),
+          child: Text("Horarios disponibles", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+        )
+    );
+    _servicios?.agendas?.forEach((element) {
+      list.add(
+        Container(
+          alignment: Alignment.centerLeft,
+          margin: const EdgeInsets.only(top: 15, left: 15, right: 15),
+          padding:const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 3.0
+            ),
+            borderRadius: const BorderRadius.all(
+                Radius.circular(5.0) //                 <--- border radius here
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(element.horario.toString(), style: TextStyle(fontSize: 16),),
+              Container(
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                        MaterialPageRoute(builder: (context) => DetailsPage(servicios: _servicios as Servicios,)),
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                    decoration: const BoxDecoration(
+                      color: Colors.blue,                    
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(25.0) //                 <--- border radius here
+                      ),
+                    ),
+                    child: Text("Reservar", style: TextStyle(color: Colors.white, fontSize: 16),),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
+      );
+    });
+
+    return Container(
+      child: Column(
+        children: list),
     );
   }
 }

@@ -58,17 +58,21 @@ class Servicios {
 
 class Agenda {
     String id;
+    String? horario;
 
     Agenda({
         required this.id,
+        this.horario
     });
 
     factory Agenda.fromJson(Map<String, dynamic> json) => Agenda(
         id: json["id"],
+        horario: json["horario"],
     );
 
     Map<String, dynamic> toJson() => {
         "id": id,
+        "horario": horario,
     };
 }
 

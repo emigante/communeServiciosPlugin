@@ -11,6 +11,7 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   Servicios? _servicios;
+  double w=0,h=0;
 
   @override
   void initState() {
@@ -20,11 +21,14 @@ class _DetailsPageState extends State<DetailsPage> {
   }
   @override
   Widget build(BuildContext context) {
+
+      w = MediaQuery.of(context).size.width;
+    h = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
           Container(
-            child: Image.network(_servicios?.galeria?.first.url ?? ""),
+            child: Image.network(_servicios?.galeria?.first.url ?? "", width: w, fit: BoxFit.fitWidth,),
           ),
           Container(
             margin: const EdgeInsets.only(left: 10, top: 10),

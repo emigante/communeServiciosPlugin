@@ -38,7 +38,7 @@ class _CardResultadosState extends State<CardResultados> {
           margin: EdgeInsets.all(10),
           child: Column(children: [
             Container(
-              child: Image.network(_servicios?.galeria?.first.url.toString() ?? ""),
+              child: Image.network(_servicios?.galeria?.first.url.toString() ?? "", height: 160, fit: BoxFit.cover, width: w,),
             ),
             Container(
               alignment: Alignment.center,

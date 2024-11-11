@@ -16,7 +16,10 @@ class FormReserva extends StatefulWidget {
   Servicios servicios;
   Horario horario;
   String fecha;
-  FormReserva({super.key, required this.servicios, required this.fecha, required this.horario});
+  String idResidente;
+  int idLote;
+  String idFraccionamiento;
+  FormReserva({super.key, required this.servicios, required this.fecha, required this.horario, required this.idFraccionamiento, required this.idLote, required this.idResidente});
 
   @override
   State<FormReserva> createState() => _FormReservaState();
@@ -44,19 +47,7 @@ class _FormReservaState extends State<FormReserva> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(        
         child: Column(children: [
-          _resumen(),
-          // Padding(
-          //     padding:const EdgeInsets.only(left: 20, right: 20),
-          //     child:  TextFormFieldBorder.withCustomCapitalization(
-          //       hint: "Descripción del problema",
-          //       controller: //Translations.of(context).text("password"),
-          //           _descripcion,
-          //       type: TextInputType.text,                
-          //       capitalization: TextCapitalization.words,
-          //       //readOnly: false,
-          //       obscure: false,
-          //       color: Colors.white)
-          //   ),
+          _resumen(),        
           Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(left: 20, right: 20, bottom: 5, top: 20),
@@ -126,7 +117,7 @@ class _FormReservaState extends State<FormReserva> {
                   _reserva.idProveedor =  widget.servicios.idProveedor;
                   _reserva.idResidente =  "aisvnskv";
                   _reserva.idServicio = widget.servicios.id;
-                  _reserva.idTrabajador = "njdnd";
+                  //_reserva.idTrabajador = "njdnd";
                   _reserva.idlote = "255";
                   var uuid = Uuid();
                   var id = uuid.v1();

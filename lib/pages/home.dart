@@ -9,7 +9,10 @@ import 'package:servicioscommune/pages/resultados.dart';
 
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  String idResidente;
+  int idLote;
+  String idFraccionamiento;
+  HomePage({super.key, required this.idFraccionamiento, required this.idLote, required this.idResidente});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -22,17 +25,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    inicio();
+    //inicio();
     super.initState();
   }
 
-  inicio() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(
-      name: "servicioscommune",
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  }
+  // inicio() async {
+  //   WidgetsFlutterBinding.ensureInitialized();
+  //   await Firebase.initializeApp(
+  //     name: "servicioscommune",
+  //     options: DefaultFirebaseOptions.currentPlatform,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: (){
                   Navigator.push(
                     context,
-                      MaterialPageRoute(builder: (context) => const ResultadosPage()),
+                      MaterialPageRoute(builder: (context) =>  ResultadosPage(idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)),
                   );
 
                 },

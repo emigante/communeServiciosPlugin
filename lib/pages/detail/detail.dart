@@ -13,7 +13,10 @@ import 'package:intl/intl.dart';
 
 class DetailsPage extends StatefulWidget {
   Servicios servicios;
-  DetailsPage({super.key, required this.servicios});
+  String idResidente;
+  int idLote;
+  String idFraccionamiento;
+  DetailsPage({super.key,required this.servicios, required this.idFraccionamiento, required this.idLote, required this.idResidente});
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -169,7 +172,8 @@ class _DetailsPageState extends State<DetailsPage> {
                             context,
                               MaterialPageRoute(builder: (context) => 
                                 FormReserva(servicios: _servicios as Servicios, 
-                                   horario: lista?[index] as Horario, fecha: fecha.toString(),)
+                                   horario: lista?[index] as Horario, fecha: fecha.toString(), 
+                                    idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)
                               ),
                           );
                         },

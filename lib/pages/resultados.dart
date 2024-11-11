@@ -5,8 +5,11 @@ import 'package:servicioscommune/controls/connection.dart';
 import 'package:servicioscommune/models/servicios.dart';
 import 'package:servicioscommune/widgets/cardResultados.dart';
 
-class ResultadosPage extends StatefulWidget {
-  const ResultadosPage({super.key});
+class ResultadosPage extends StatefulWidget {  
+   String idResidente;
+  int idLote;
+  String idFraccionamiento;
+  ResultadosPage({super.key, required this.idFraccionamiento, required this.idLote, required this.idResidente});
 
   @override
   State<ResultadosPage> createState() => _ResultadosPageState();
@@ -50,7 +53,9 @@ class _ResultadosPageState extends State<ResultadosPage> {
           return ColumnBuilder(
             itemCount: _listaServicios.length,
             itemBuilder: (context, index) {              
-              return CardResultados(servicios: _listaServicios[index]);
+              return CardResultados(servicios: _listaServicios[index],
+                idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,
+              );
             });
         } else {
           return const SizedBox();

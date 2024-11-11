@@ -8,7 +8,10 @@ import 'package:flutter/material.dart';
 
 class CardResultados extends StatefulWidget {
   Servicios servicios;
-  CardResultados({super.key, required this.servicios});
+  String idResidente;
+  int idLote;
+  String idFraccionamiento;  
+  CardResultados({super.key, required this.servicios, required this.idFraccionamiento, required this.idLote, required this.idResidente});
 
   @override
   State<CardResultados> createState() => _CardResultadosState();
@@ -67,7 +70,8 @@ class _CardResultadosState extends State<CardResultados> {
                 onTap: (){
                   Navigator.push(
                     context,
-                      MaterialPageRoute(builder: (context) => DetailsPage(servicios: _servicios as Servicios,)),
+                      MaterialPageRoute(builder: (context) => DetailsPage(servicios: _servicios as Servicios,
+                       idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)),
                   );
                 },
                 child: Container(

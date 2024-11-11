@@ -1,6 +1,6 @@
 name: servicioscommune
 description: "Servicios Commune"
-version: 0.0.9
+version: 0.0.10
 homepage:
 
 environment:
@@ -15,7 +15,7 @@ dependencies:
   firebase_core: ^2.27.0
   cloud_firestore: ^4.15.8
   alphabet_list_scroll_view: ^2.0.0
-  http: ^1.2.0
+  http: ^0.13.4
   syncfusion_flutter_calendar: ^20.3.60
   date_format: ^2.0.9
   font_awesome_flutter: ^10.7.0

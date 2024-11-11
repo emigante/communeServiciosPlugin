@@ -26,14 +26,13 @@ class TipoServicios {
           nombre: data['nombre'] ?? '',
       );
     }
-
-     factory TipoServicios.fromJsonService(Map<String, dynamic> data) {      
+    factory TipoServicios.fromJsonService(Map<String, dynamic> data) {
+      
         return TipoServicios(
           id: data["id"],
           nombre: data['nombre'] ?? '',
       );
     }
-
 
     Map<String, dynamic> toJson() => {
         "id": id,

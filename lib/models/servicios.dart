@@ -9,6 +9,7 @@ List<Servicios> serviciosFromJson(String str) => List<Servicios>.from(json.decod
 String serviciosToJson(List<Servicios> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Servicios {
+    String? id;
     String? nombreServicio;
     String? descripcion;
     int? precio;
@@ -19,7 +20,9 @@ class Servicios {
     List<Galeria>? galeria;
     bool? activo;
 
+
     Servicios({
+        this.id,
         this.nombreServicio,
         this.descripcion,
         this.precio,
@@ -32,6 +35,7 @@ class Servicios {
     });
 
     factory Servicios.fromJson(Map<String, dynamic> json) => Servicios(
+        id: json["id"],
         nombreServicio: json["nombreServicio"],
         descripcion: json["descripcion"],
         precio: json["precio"],
@@ -45,6 +49,7 @@ class Servicios {
 
     Map<String, dynamic> toJson() => {
         "nombreServicio": nombreServicio,
+        "id": id,
         "descripcion": descripcion,
         "precio": precio,
         "desde": desde,
@@ -57,12 +62,12 @@ class Servicios {
 }
 
 class Agenda {
-    String id;
+    String? id;
     String? horario;
 
     Agenda({
         required this.id,
-        this.horario
+        this.horario,
     });
 
     factory Agenda.fromJson(Map<String, dynamic> json) => Agenda(

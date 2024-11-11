@@ -1,10 +1,10 @@
 
-
-import 'package:flutter/material.dart';
 import 'package:servicioscommune/controls/connection.dart';
 import 'package:servicioscommune/models/proveedor.dart';
 import 'package:servicioscommune/models/servicios.dart';
-import 'package:servicioscommune/pages/detail.dart';
+import 'package:servicioscommune/pages/detail/detail.dart';
+import 'package:servicioscommune/widgets/columnBuilder.dart';
+import 'package:flutter/material.dart';
 
 class CardResultados extends StatefulWidget {
   Servicios servicios;
@@ -51,7 +51,8 @@ class _CardResultadosState extends State<CardResultados> {
             
             Container(
               padding:const EdgeInsets.only(left: 10, top: 5),
-              child: Text(_servicios!.descripcion.toString().substring(0, 70)+ "..." , style: TextStyle(fontSize: 16),),),
+              child: SizedBox()//Text(_servicios!.descripcion.toString().substring(0, 70)+ "..." , style: TextStyle(fontSize: 16),),
+            ),
              _proveedor(),
              
             Container(
@@ -107,12 +108,12 @@ class _CardResultadosState extends State<CardResultados> {
                 Container(
                   margin:  const EdgeInsets.only(top: 5),
                   alignment: Alignment.centerLeft,
-                  child: Text("Proveedor: "+proveedor!.body.nombre),
+                  child: Text("Proveedor: "+proveedor!.body.nombre.toString()),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 0),
-                  child: Text(proveedor?.body.correo ?? ""),
-                )
+                // Container(
+                //   margin: const EdgeInsets.only(top: 0),
+                //   child: Text(proveedor?.body.correo ?? ""),
+                // )
                 
               ],
             ),

@@ -29,18 +29,18 @@ class Proveedor {
 }
 
 class Body {
-    String correo;
-    String fotourl;
-    String telefono;
-    String nombre;
-    String rfc;
+    String? correo;
+    String? fotourl;
+    String? telefono;
+    String? nombre;
+    String? rfc;
 
     Body({
-        required this.correo,
-        required this.fotourl,
-        required this.telefono,
-        required this.nombre,
-        required this.rfc,
+         this.correo,
+         this.fotourl,
+         this.telefono,
+         this.nombre,
+         this.rfc,
     });
 
     factory Body.fromJson(Map<String, dynamic> json) => Body(

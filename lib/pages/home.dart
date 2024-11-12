@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:servicioscommune/columnBuilder.dart';
 import 'package:servicioscommune/controls/connection.dart';
 import 'package:servicioscommune/firebase_options.dart';
 import 'package:servicioscommune/models/tipoServicios.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:servicioscommune/pages/reserva/reservaPage.dart';
 import 'package:servicioscommune/pages/resultados.dart';
 
 
@@ -40,7 +42,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          InkWell(
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ReservaPage()),
+              );
+
+            },
+            child: Container(
+              padding: EdgeInsets.only(right: 10),
+              child: Icon(FontAwesomeIcons.calendar)),
+          )
+        ],
+      ),
       body: SingleChildScrollView(                
         child: Column(children: [          
           Container(

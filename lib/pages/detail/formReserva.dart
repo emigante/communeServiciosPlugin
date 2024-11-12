@@ -112,7 +112,7 @@ class _FormReservaState extends State<FormReserva> {
               child: InkWell(
               onTap: () async{        
                 try{
-                  Provider.of<LoadingProvider>(context, listen: false).setLoad(true);
+                  //Provider.of<LoadingProvider>(context, listen: false).setLoad(true);
                   Reserva? _reserva = Reserva();
                   
                   _reserva.descripcion = _descripcion.text;
@@ -148,21 +148,26 @@ class _FormReservaState extends State<FormReserva> {
                   /*List<int> imageBytes = file.readAsBytesSync();
                   String base64Image = base64Encode(imageBytes); */
 
-                  await _db.saveReserva(_reserva);
+                  final resp = await _db.saveReserva(_reserva);
 
-                  Provider.of<LoadingProvider>(context, listen: false).setLoad(false);
-                  Fluttertoast.showToast(
-                    msg: 'Debes de aceptar términos y condiciones',
+                  if(resp == "200"){
+                    Fluttertoast.showToast(
+                    msg: 'Se ha guardado la reserva',
                     toastLength: Toast.LENGTH_LONG,
                     gravity: ToastGravity.BOTTOM,
                     backgroundColor: Colors.grey[800],
-                  );
-                  Navigator.push(
-                    context,
-                      MaterialPageRoute(builder: (context) => HomePage(
-                       idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)),
-                  );
-                  return;
+                    );
+                    Navigator.push(
+                      context,
+                        MaterialPageRoute(builder: (context) => HomePage(
+                        idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)),
+                    );
+                    return;
+                  }
+
+                 // Provider.of<LoadingProvider>(context, listen: false).setLoad(false);
+                  
+                  
 
                 }catch(ex){
                   print(ex);

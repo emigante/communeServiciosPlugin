@@ -223,7 +223,9 @@ class DatabaseServices {
       }
     } catch (e) {
       print(
-          "Is not possible get getEstadoDireccion at this time. Unexpected error:\n$e");
+          "Is not possible save reserva at this time. Unexpected error:\n$e");
+      return "500";
+      
     }
     return "200";
   }

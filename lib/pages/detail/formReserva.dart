@@ -1,13 +1,17 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:servicioscommune/controls/connection.dart';
 import 'package:servicioscommune/models/horario.dart';
 import 'package:servicioscommune/models/reserva.dart';
 import 'package:servicioscommune/models/reserva.dart' as gale;
 import 'package:servicioscommune/models/servicios.dart';
+import 'package:servicioscommune/pages/home.dart';
 import 'package:servicioscommune/widgets/gallery.dart';
+import 'package:servicioscommune/widgets/splashProvider.dart';
 import 'package:servicioscommune/widgets/textfielborder.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -108,6 +112,7 @@ class _FormReservaState extends State<FormReserva> {
               child: InkWell(
               onTap: () async{        
                 try{
+                  Provider.of<LoadingProvider>(context, listen: false).setLoad(true);
                   Reserva? _reserva = Reserva();
                   
                   _reserva.descripcion = _descripcion.text;
@@ -144,6 +149,20 @@ class _FormReservaState extends State<FormReserva> {
                   String base64Image = base64Encode(imageBytes); */
 
                   await _db.saveReserva(_reserva);
+
+                  Provider.of<LoadingProvider>(context, listen: false).setLoad(false);
+                  Fluttertoast.showToast(
+                    msg: 'Debes de aceptar términos y condiciones',
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.BOTTOM,
+                    backgroundColor: Colors.grey[800],
+                  );
+                  Navigator.push(
+                    context,
+                      MaterialPageRoute(builder: (context) => HomePage(
+                       idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)),
+                  );
+                  return;
 
                 }catch(ex){
                   print(ex);

@@ -202,14 +202,14 @@ class DatabaseServices {
 
   Future<String?> saveReserva(Reserva reserva) async {
     Reserva? proveedor;
-
+    final bdy = jsonEncode(reserva.toJson());
     String url = "https://us-central1-servicioscommune.cloudfunctions.net/reservaa/api/saveReserva";
     print(reserva.toJson());
 
-   // Map<String,String> headers = {'Accept': 'application/json'};
+   Map<String,String> headers = {'Content-Type': 'application/json'};
 
 
-    final response = await http.post(Uri.parse(url), body: reserva.toJson(),);
+    final response = await http.post(Uri.parse(url),headers:headers, body:bdy,);
 
      try {
       if (response.statusCode == 200) {

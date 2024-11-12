@@ -133,13 +133,12 @@ class _FormReservaState extends State<FormReserva> {
                     List<int> imageBytes = element.readAsBytesSync();
                     String base64Image = base64Encode(imageBytes); 
                     print(base64Image);
-                    gale.Galeria gal =  gale.Galeria(id: "aaa", url: "ejemplo");
+                    gale.Galeria gal =  gale.Galeria(id: "aaa", url: base64Image);
                     galery.add(gal);
                     
                     
                   });
                   _reserva.galeria = galery;
-                  print(_reserva.galeria);
 
                   /*List<int> imageBytes = file.readAsBytesSync();
                   String base64Image = base64Encode(imageBytes); */

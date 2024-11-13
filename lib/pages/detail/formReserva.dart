@@ -51,7 +51,13 @@ class _FormReservaState extends State<FormReserva> {
     h = MediaQuery.of(context).size.height;
     
     
-    return Scaffold(
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<LoadingProvider>(
+            create: (_) => LoadingProvider(),
+          ),
+        ],
+      child: Scaffold(
       appBar: AppBar(backgroundColor: Colors.white, title: Text("Datos de reserva", style: TextStyle(fontSize: 18),), centerTitle: true,),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(        
@@ -178,6 +184,12 @@ class _FormReservaState extends State<FormReserva> {
                   
 
                 }catch(ex){
+                  Fluttertoast.showToast(
+                    msg: 'Ocurrió un error, intentar de nuevo',
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.BOTTOM,
+                    backgroundColor: Colors.grey[800],
+                    );
                   print(ex);
                 }
 
@@ -201,7 +213,7 @@ class _FormReservaState extends State<FormReserva> {
 
         ]),
       ),
-    );
+    ));
   }
 
   _resumen(){

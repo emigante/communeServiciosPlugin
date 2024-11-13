@@ -9,7 +9,10 @@ class ResultadosPage extends StatefulWidget {
    String idResidente;
   int idLote;
   String idFraccionamiento;
-  ResultadosPage({super.key, required this.idFraccionamiento, required this.idLote, required this.idResidente});
+  String nombreResidente;
+  String direccion;
+  ResultadosPage({super.key, required this.idFraccionamiento, required this.idLote,
+   required this.idResidente, required this.direccion, required this.nombreResidente});
 
   @override
   State<ResultadosPage> createState() => _ResultadosPageState();
@@ -55,6 +58,7 @@ class _ResultadosPageState extends State<ResultadosPage> {
             itemBuilder: (context, index) {              
               return CardResultados(servicios: _listaServicios[index],
                 idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,
+                direccion: widget.direccion, nombreResidente: widget.nombreResidente,
               );
             });
         } else {

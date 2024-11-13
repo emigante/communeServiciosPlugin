@@ -11,7 +11,10 @@ class CardResultados extends StatefulWidget {
   String idResidente;
   int idLote;
   String idFraccionamiento;  
-  CardResultados({super.key, required this.servicios, required this.idFraccionamiento, required this.idLote, required this.idResidente});
+  String nombreResidente;
+  String direccion;
+  CardResultados({super.key, required this.servicios, required this.idFraccionamiento, 
+  required this.idLote, required this.idResidente, required this.direccion, required this.nombreResidente});
 
   @override
   State<CardResultados> createState() => _CardResultadosState();
@@ -71,7 +74,9 @@ class _CardResultadosState extends State<CardResultados> {
                   Navigator.push(
                     context,
                       MaterialPageRoute(builder: (context) => DetailsPage(servicios: _servicios as Servicios,
-                       idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)),
+                       idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,
+                        direccion: widget.direccion, nombreResidente: widget.nombreResidente,
+                       )),
                   );
                 },
                 child: Container(

@@ -16,7 +16,10 @@ class DetailsPage extends StatefulWidget {
   String idResidente;
   int idLote;
   String idFraccionamiento;
-  DetailsPage({super.key,required this.servicios, required this.idFraccionamiento, required this.idLote, required this.idResidente});
+  String nombreResidente;
+  String direccion;
+  DetailsPage({super.key,required this.servicios, required this.idFraccionamiento, 
+  required this.idLote, required this.idResidente, required this.direccion, required this.nombreResidente});
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -173,7 +176,9 @@ class _DetailsPageState extends State<DetailsPage> {
                               MaterialPageRoute(builder: (context) => 
                                 FormReserva(servicios: _servicios as Servicios, 
                                    horario: lista?[index] as Horario, fecha: fecha.toString(), 
-                                    idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)
+                                    idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,
+                                    direccion: widget.direccion, nombreResidente: widget.nombreResidente
+                                    )
                               ),
                           );
                         },

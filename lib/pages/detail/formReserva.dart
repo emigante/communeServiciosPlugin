@@ -23,7 +23,12 @@ class FormReserva extends StatefulWidget {
   String idResidente;
   int idLote;
   String idFraccionamiento;
-  FormReserva({super.key, required this.servicios, required this.fecha, required this.horario, required this.idFraccionamiento, required this.idLote, required this.idResidente});
+  String nombreResidente;
+  String direccion;
+  FormReserva({super.key, required this.servicios, required this.fecha, required this.horario, 
+    required this.idFraccionamiento, required this.idLote, required this.idResidente,
+    required this.direccion, required this.nombreResidente
+  });
 
   @override
   State<FormReserva> createState() => _FormReservaState();
@@ -118,9 +123,9 @@ class _FormReservaState extends State<FormReserva> {
                   _reserva.descripcion = _descripcion.text;
                   _reserva.fecha = widget.fecha;
                   _reserva.hora = widget.horario.hora;
-                  _reserva.idFraccionamiento = "aqua";
+                  _reserva.idFraccionamiento = widget.idFraccionamiento;
                   _reserva.idProveedor =  widget.servicios.idProveedor;
-                  _reserva.idResidente =  "aisvnskv";
+                  _reserva.idResidente =  widget.idResidente;
                   _reserva.idServicio = widget.servicios.id;
                   //_reserva.idTrabajador = "njdnd";
                   _reserva.idlote = "255";
@@ -160,7 +165,8 @@ class _FormReservaState extends State<FormReserva> {
                     Navigator.push(
                       context,
                         MaterialPageRoute(builder: (context) => HomePage(
-                        idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)),
+                        idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente, 
+                        direccion: widget.direccion, nombreResidente: widget.nombreResidente)),
                     );
                     return;
                   }

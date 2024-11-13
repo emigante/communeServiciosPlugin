@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:servicioscommune/columnBuilder.dart';
 import 'package:servicioscommune/controls/connection.dart';
 import 'package:servicioscommune/firebase_options.dart';
@@ -7,6 +8,7 @@ import 'package:servicioscommune/models/tipoServicios.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:servicioscommune/pages/reserva/reservaPage.dart';
 import 'package:servicioscommune/pages/resultados.dart';
+import 'package:servicioscommune/widgets/splashProvider.dart';
 
 
 
@@ -14,7 +16,10 @@ class HomePage extends StatefulWidget {
   String idResidente;
   int idLote;
   String idFraccionamiento;
-  HomePage({super.key, required this.idFraccionamiento, required this.idLote, required this.idResidente});
+  String nombreResidente;
+  String direccion;
+  HomePage({super.key, required this.idFraccionamiento, 
+      required this.idLote, required this.idResidente, required this.direccion, required this.nombreResidente});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -41,31 +46,38 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          InkWell(
-            onTap: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ReservaPage()),
-              );
-
-            },
-            child: Container(
-              padding: EdgeInsets.only(right: 10),
-              child: Icon(FontAwesomeIcons.calendar)),
-          )
-        ],
-      ),
-      body: SingleChildScrollView(                
-        child: Column(children: [          
-          Container(
-            margin: const EdgeInsets.only(top: 10, left: 15),
-            child: const Text("¿Qué servicio estas buscando?", style: TextStyle(fontSize: 22),),
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<LoadingProvider>(
+            create: (_) => LoadingProvider(),
           ),
-          _dropCatalogo(),
-        ]),
+        ],
+      child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            InkWell(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ReservaPage()),
+                );
+      
+              },
+              child: Container(
+                padding: EdgeInsets.only(right: 10),
+                child: Icon(FontAwesomeIcons.calendar)),
+            )
+          ],
+        ),
+        body: SingleChildScrollView(                
+          child: Column(children: [          
+            Container(
+              margin: const EdgeInsets.only(top: 10, left: 15),
+              child: const Text("¿Qué servicio estas buscando?", style: TextStyle(fontSize: 22),),
+            ),
+            _dropCatalogo(),
+          ]),
+        ),
       ),
     );
   }
@@ -87,15 +99,16 @@ class _HomePageState extends State<HomePage> {
           }
           return ColumnBuilder(
             itemCount: _tipoServiciosList.length,
-            itemBuilder: (context, index) {
-
-              
+            itemBuilder: (context, index) {              
               return ListTile(
                 title: Text(_tipoServiciosList[index].nombre.toString(), style: TextStyle(fontSize: 18),),
                 onTap: (){
                   Navigator.push(
                     context,
-                      MaterialPageRoute(builder: (context) =>  ResultadosPage(idFraccionamiento: widget.idFraccionamiento, idLote: widget.idLote, idResidente: widget.idResidente,)),
+                      MaterialPageRoute(builder: (context) =>  ResultadosPage(idFraccionamiento: widget.idFraccionamiento,
+                       idLote: widget.idLote, idResidente: widget.idResidente,
+                        direccion: widget.direccion, nombreResidente: widget.nombreResidente
+                      )),
                   );
 
                 },

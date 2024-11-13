@@ -117,7 +117,7 @@ class _FormReservaState extends State<FormReserva> {
               child: InkWell(
               onTap: () async{        
                 try{
-                  //Provider.of<LoadingProvider>(context, listen: false).setLoad(true);
+                  Provider.of<LoadingProvider>(context, listen: false).setLoad(true);
                   Reserva? _reserva = Reserva();
                   
                   _reserva.descripcion = _descripcion.text;
@@ -127,6 +127,8 @@ class _FormReservaState extends State<FormReserva> {
                   _reserva.idProveedor =  widget.servicios.idProveedor;
                   _reserva.idResidente =  widget.idResidente;
                   _reserva.idServicio = widget.servicios.id;
+                  _reserva.nombreResidente = widget.nombreResidente;
+                  _reserva.direccion = widget.direccion;
                   //_reserva.idTrabajador = "njdnd";
                   _reserva.idlote = "255";
                   var uuid = Uuid();
@@ -171,7 +173,7 @@ class _FormReservaState extends State<FormReserva> {
                     return;
                   }
 
-                 // Provider.of<LoadingProvider>(context, listen: false).setLoad(false);
+                  Provider.of<LoadingProvider>(context, listen: false).setLoad(false);
                   
                   
 

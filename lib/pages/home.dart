@@ -46,13 +46,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider<LoadingProvider>(
-            create: (_) => LoadingProvider(),
-          ),
-        ],
-      child: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
           actions: [
             InkWell(
@@ -78,7 +72,7 @@ class _HomePageState extends State<HomePage> {
             _dropCatalogo(),
           ]),
         ),
-      ),
+      
     );
   }
 

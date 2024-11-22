@@ -123,7 +123,7 @@ class _FormReservaState extends State<FormReserva> {
               child: InkWell(
               onTap: () async{        
                 try{
-                  Provider.of<LoadingProvider>(context, listen: false).setLoad(true);
+                  //Provider.of<LoadingProvider>(context, listen: false).setLoad(true);
                   Reserva? _reserva = Reserva();
                   
                   _reserva.descripcion = _descripcion.text;
@@ -179,7 +179,7 @@ class _FormReservaState extends State<FormReserva> {
                     return;
                   }
 
-                  Provider.of<LoadingProvider>(context, listen: false).setLoad(false);
+                  //Provider.of<LoadingProvider>(context, listen: false).setLoad(false);
                   
                   
 

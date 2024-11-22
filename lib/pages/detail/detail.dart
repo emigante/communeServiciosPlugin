@@ -72,27 +72,8 @@ class _DetailsPageState extends State<DetailsPage> {
           ), 
           _fechas(),   
           _horarios(),    
-          Container(
-              child: InkWell(
-                onTap: (){
-                  Navigator.push(
-                    context,
-                      MaterialPageRoute(builder: (context) => CalendarPage(servicios: _servicios as Servicios,)),
-                  );
-                },
-                child: Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 10),
-                  padding: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
-                  decoration: const BoxDecoration(
-                    color: Colors.blue,                    
-                    borderRadius: BorderRadius.all(
-                        Radius.circular(25.0) //                 <--- border radius here
-                    ),
-                  ),
-                  child: Text("Ver más", style: TextStyle(color: Colors.white, fontSize: 16),),
-                ),
-              ),
-            ),
+          const SizedBox(height: 10,)
+          
         ],),
       ),
     );

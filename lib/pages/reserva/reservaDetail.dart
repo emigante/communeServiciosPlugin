@@ -41,7 +41,7 @@ class _ReservaDetailState extends State<ReservaDetail> {
               Container(
                 padding: const EdgeInsets.only(top: 15),
                 alignment: Alignment.centerLeft,
-                child: Text("Fecha y hora:  "+_reserva!.nombreServicio.toString() +" "+_reserva!.hora.toString(),
+                child: Text("Servicio:  "+_reserva!.nombreServicio.toString(),
                   style: TextStyle(fontSize: 16),
                 ),
               ),

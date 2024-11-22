@@ -135,6 +135,7 @@ class _FormReservaState extends State<FormReserva> {
                   _reserva.idServicio = widget.servicios.id;
                   _reserva.nombreResidente = widget.nombreResidente;
                   _reserva.direccion = widget.direccion;
+                  _reserva.nombreServicio = widget.servicios.nombreServicio.toString();
                   //_reserva.idTrabajador = "njdnd";
                   _reserva.idlote = "255";
                   var uuid = Uuid();
